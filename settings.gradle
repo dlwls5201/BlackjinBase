@@ -1,2 +1,3 @@
+include ':mybase'
 include ':app'
 rootProject.name = "BlakjinBase"

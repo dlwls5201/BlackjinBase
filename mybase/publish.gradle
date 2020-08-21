@@ -1,0 +1,12 @@
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'dlwls5201'
+    groupId = 'com.tistory.mybase'
+    artifactId = 'black-jin-base'
+    publishVersion = '1.0.0'
+    desc = 'https://github.com/dlwls5201/BlackjinBase'
+    website = 'https://github.com/dlwls5201/BlackjinBase'
+    issueTracker = "https://github.com/dlwls5201/BlackjinBase/issues"
+    repository = "https://github.com/dlwls5201/BlackjinBase.git"
+}
