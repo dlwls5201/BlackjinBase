@@ -2,17 +2,14 @@ package com.tistory.blackjin
 
 import android.content.Intent
 import android.os.Bundle
-import com.tistory.blackjin.base.BaseActivity
-import com.tistory.blackjin.databinding.ActivityMainBinding
-import com.tistory.blackjin.sample.SampleActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.tistory.blackjinbase.sample.SampleActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
-
-    override var logTag = "MainActivity"
-
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
         button.setOnClickListener {
             startActivity(
