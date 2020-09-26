@@ -1,56 +1,42 @@
 package com.tistory.blackjinbase.ext
 
-import android.app.AlertDialog
-import android.content.Context
-import android.content.DialogInterface
-import android.widget.Toast
-import androidx.annotation.StringRes
-import com.tistory.blackjinbase.ext.dialog.AlertBuilder
-import com.tistory.blackjinbase.ext.dialog.AndroidAlertBuilder
-
-inline fun <A, B, R> ifNotNull(a: A?, b: B?, code: (A, B) -> R) {
-    if (a != null && b != null) {
-        code(a, b)
-    }
+//https://stackoverflow.com/questions/35513636/multiple-variable-let-in-kotlin
+inline fun <T1 : Any, T2 : Any, R : Any> safeLet(p1: T1?, p2: T2?, block: (T1, T2) -> R?): R? {
+    return if (p1 != null && p2 != null) block(p1, p2) else null
 }
 
-inline fun <A, B, C, R> ifNotNull(a: A?, b: B?, c: C?, code: (A, B, C) -> R) {
-    if (a != null && b != null && c != null) {
-        code(a, b, c)
-    }
+inline fun <T1 : Any, T2 : Any, T3 : Any, R : Any> safeLet(
+    p1: T1?,
+    p2: T2?,
+    p3: T3?,
+    block: (T1, T2, T3) -> R?
+): R? {
+    return if (p1 != null && p2 != null && p3 != null) block(p1, p2, p3) else null
 }
 
-fun Context.toast(message: CharSequence?) {
-    if (message.isNullOrEmpty()) return
-    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+inline fun <T1 : Any, T2 : Any, T3 : Any, T4 : Any, R : Any> safeLet(
+    p1: T1?,
+    p2: T2?,
+    p3: T3?,
+    p4: T4?,
+    block: (T1, T2, T3, T4) -> R?
+): R? {
+    return if (p1 != null && p2 != null && p3 != null && p4 != null) block(p1, p2, p3, p4) else null
 }
 
-fun Context.toast(@StringRes messageId: Int) {
-    Toast.makeText(this, messageId, Toast.LENGTH_SHORT).show()
+inline fun <T1 : Any, T2 : Any, T3 : Any, T4 : Any, T5 : Any, R : Any> safeLet(
+    p1: T1?,
+    p2: T2?,
+    p3: T3?,
+    p4: T4?,
+    p5: T5?,
+    block: (T1, T2, T3, T4, T5) -> R?
+): R? {
+    return if (p1 != null && p2 != null && p3 != null && p4 != null && p5 != null) block(
+        p1,
+        p2,
+        p3,
+        p4,
+        p5
+    ) else null
 }
-
-fun Context.longToast(message: CharSequence?) {
-    if (message.isNullOrEmpty()) return
-    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-}
-
-fun Context.longToast(@StringRes messageId: Int) {
-    Toast.makeText(this, messageId, Toast.LENGTH_LONG).show()
-}
-
-fun Context.alert(
-    title: CharSequence? = null,
-    message: CharSequence? = null,
-    init: (AlertBuilder<DialogInterface>.() -> Unit)? = null
-): AlertBuilder<AlertDialog> {
-    return AndroidAlertBuilder(this).apply {
-        if (title != null) {
-            this.title = title
-        }
-        if (message != null) {
-            this.message = message
-        }
-        if (init != null) init()
-    }
-}
-
