@@ -1,92 +1,93 @@
 package com.tistory.blackjinbase.util
 
 import android.util.Log
-import com.tistory.blackjinbase.BuildConfig
 
 object Dlog {
 
     private const val TAG = "BlackJin"
 
+    private var isDebug = false
+
+    fun initDebug(isDebug: Boolean) {
+        this.isDebug = isDebug
+    }
+
     // debug
     fun d(tag: String, msg: String?) {
-        if (isDebug()) {
+        if (isDebug) {
             Log.d(tag, buildLogMsg(msg))
         }
     }
 
     fun d(msg: String?) {
-        if (isDebug()) {
+        if (isDebug) {
             Log.d(TAG, buildLogMsg(msg))
         }
     }
 
     //info
     fun i(tag: String, msg: String?) {
-        if (isDebug()) {
+        if (isDebug) {
             Log.i(tag, buildLogMsg(msg))
         }
     }
 
     fun i(msg: String?) {
-        if (isDebug()) {
+        if (isDebug) {
             Log.i(TAG, buildLogMsg(msg))
         }
     }
 
     //warn
     fun w(tag: String, msg: String?) {
-        if (isDebug()) {
+        if (isDebug) {
             Log.w(tag, buildLogMsg(msg))
         }
     }
 
     fun w(msg: String?) {
-        if (isDebug()) {
+        if (isDebug) {
             Log.w(TAG, buildLogMsg(msg))
         }
     }
 
     //error
     fun e(tag: String, msg: String?) {
-        if (isDebug()) {
+        if (isDebug) {
             Log.e(tag, buildLogMsg(msg))
         }
     }
 
     fun e(msg: String?) {
-        if (isDebug()) {
+        if (isDebug) {
             Log.e(TAG, buildLogMsg(msg))
         }
     }
 
     //verbose
     fun v(tag: String, msg: String?) {
-        if (isDebug()) {
+        if (isDebug) {
             Log.v(tag, buildLogMsg(msg))
         }
     }
 
     fun v(msg: String?) {
-        if (isDebug()) {
+        if (isDebug) {
             Log.v(TAG, buildLogMsg(msg))
         }
     }
 
     //what a terrible failure
     fun wtf(tag: String, msg: String?) {
-        if (isDebug()) {
+        if (isDebug) {
             Log.wtf(tag, buildLogMsg(msg))
         }
     }
 
     fun wtf(msg: String?) {
-        if (isDebug()) {
+        if (isDebug) {
             Log.wtf(TAG, buildLogMsg(msg))
         }
-    }
-
-    private fun isDebug(): Boolean {
-        return BuildConfig.DEBUG
     }
 
     private fun buildLogMsg(msg: String?): String {
