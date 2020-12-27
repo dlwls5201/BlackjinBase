@@ -1,7 +1,6 @@
 package com.tistory.blackjinbase.util
 
 import android.util.Log
-import com.tistory.blackjinbase.BuildConfig
 
 object Showlog {
 
@@ -9,13 +8,9 @@ object Showlog {
 
     // debug
     fun d(msg: String?) {
-        if (isDebug()) {
+        if (Dlog.isDebug) {
             Log.d(TAG, buildLogMsg(msg))
         }
-    }
-
-    private fun isDebug(): Boolean {
-        return BuildConfig.DEBUG
     }
 
     private fun buildLogMsg(msg: String?): String {

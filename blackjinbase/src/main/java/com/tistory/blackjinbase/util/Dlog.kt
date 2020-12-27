@@ -6,7 +6,7 @@ object Dlog {
 
     private const val TAG = "BlackJin"
 
-    private var isDebug = false
+    var isDebug = false
 
     fun initDebug(isDebug: Boolean) {
         this.isDebug = isDebug
