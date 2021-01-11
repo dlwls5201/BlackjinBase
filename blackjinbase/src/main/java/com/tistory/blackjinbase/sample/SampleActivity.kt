@@ -7,6 +7,8 @@ import com.tistory.blackjinbase.databinding.ActivitySampleBinding
 import com.tistory.blackjinbase.sample.base.RecyclerViewFragment
 import com.tistory.blackjinbase.sample.live.LiveRecyclerViewFragment
 import com.tistory.blackjinbase.sample.simple.SimpleRecyclerViewFragment
+import com.tistory.blackjinbase.sample.simpleasync.SimpleAsyncRecyclerViewFragment
+import com.tistory.blackjinbase.sample.simplelist.SimpleListRecyclerViewFragment
 
 class SampleActivity : BaseActivity<ActivitySampleBinding>(R.layout.activity_sample) {
 
@@ -30,6 +32,20 @@ class SampleActivity : BaseActivity<ActivitySampleBinding>(R.layout.activity_sam
     fun goToSimpleRecyclerViewFragment() {
         supportFragmentManager.beginTransaction()
             .add(R.id.lyt_sample_container, SimpleRecyclerViewFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
+    }
+
+    fun goToSimpleAsyncRecyclerViewFragment() {
+        supportFragmentManager.beginTransaction()
+            .add(R.id.lyt_sample_container, SimpleAsyncRecyclerViewFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
+    }
+
+    fun goToSimpleListRecyclerViewFragment() {
+        supportFragmentManager.beginTransaction()
+            .add(R.id.lyt_sample_container, SimpleListRecyclerViewFragment.newInstance())
             .addToBackStack(null)
             .commit()
     }

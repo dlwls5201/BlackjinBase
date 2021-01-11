@@ -31,6 +31,18 @@
             android:text="@string/simple_recycler_view_sample" />
 
         <Button
+            android:id="@+id/btn_simple_async_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:text="@string/simple_async_recycler_view_sample" />
+
+        <Button
+            android:id="@+id/btn_simple_list_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:text="@string/simple_list_recycler_view_sample" />
+
+        <Button
             android:id="@+id/btn_live_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"

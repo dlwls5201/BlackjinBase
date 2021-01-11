@@ -3,8 +3,10 @@ package com.tistory.blackjinbase.simplerecyclerview
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.tistory.blackjinbase.BR
+import com.tistory.blackjinbase.base.BaseDiffUtilCallback
 
 abstract class SimpleRecyclerViewAdapter<ITEM : Any, B : ViewDataBinding>(
     @LayoutRes private val layoutRes: Int,
@@ -13,12 +15,18 @@ abstract class SimpleRecyclerViewAdapter<ITEM : Any, B : ViewDataBinding>(
 
     private val items = mutableListOf<ITEM>()
 
-    fun replaceAll(items: List<ITEM>?) {
-        items?.let {
-            this.items.run {
-                clear()
-                addAll(it)
-            }
+    fun replaceAll(items: List<ITEM>, useDiffCallback: Boolean = false) {
+        val diffCallback = BaseDiffUtilCallback(this.items, items)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+
+        this.items.run {
+            clear()
+            addAll(items)
+        }
+
+        if (useDiffCallback) {
+            diffResult.dispatchUpdatesTo(this)
+        } else {
             notifyDataSetChanged()
         }
     }

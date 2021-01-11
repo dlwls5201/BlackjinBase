@@ -1,4 +1,4 @@
-package com.tistory.blackjinbase.sample.simple
+package com.tistory.blackjinbase.sample.simpleasync
 
 import android.os.Bundle
 import android.view.View
@@ -10,21 +10,21 @@ import com.tistory.blackjinbase.databinding.FragmentRecyclerViewBinding
 import com.tistory.blackjinbase.databinding.ItemSampleBinding
 import com.tistory.blackjinbase.ext.toast
 import com.tistory.blackjinbase.sample.data.SampleData
-import com.tistory.blackjinbase.simplerecyclerview.SimpleRecyclerViewAdapter
+import com.tistory.blackjinbase.simplerecyclerview.SimpleAsyncRecyclerViewAdapter
 import com.tistory.blackjinbase.simplerecyclerview.SimpleViewHolder
 
-class SimpleRecyclerViewFragment :
+class SimpleAsyncRecyclerViewFragment :
     BaseFragment<FragmentRecyclerViewBinding>(R.layout.fragment_recycler_view) {
 
-    override var logTag = "SimpleRecyclerViewFragment"
+    override var logTag = "SimpleAsyncRecyclerViewFragment"
 
     companion object {
 
-        fun newInstance() = SimpleRecyclerViewFragment()
+        fun newInstance() = SimpleAsyncRecyclerViewFragment()
     }
 
     private val simpleAdapter by lazy {
-        object : SimpleRecyclerViewAdapter<String, ItemSampleBinding>(
+        object : SimpleAsyncRecyclerViewAdapter<String, ItemSampleBinding>(
             R.layout.item_sample,
             BR.model
         ) {
@@ -35,7 +35,7 @@ class SimpleRecyclerViewFragment :
                 return super.onCreateViewHolder(parent, viewType).apply {
                     itemView.setOnClickListener {
                         val data = getItem(adapterPosition)
-                        this@SimpleRecyclerViewFragment.toast(data)
+                        this@SimpleAsyncRecyclerViewFragment.toast(data)
                     }
                 }
             }
@@ -48,18 +48,14 @@ class SimpleRecyclerViewFragment :
         initRecyclerView()
     }
 
-    private var userDiffCallback = false
-
     private var shuffle = true
 
     private fun initButton() {
         binding.btnShuffle.setOnClickListener {
             if (shuffle) {
-                simpleAdapter.replaceAll(
-                    SampleData.getShuffle("Simple Shuffle"), userDiffCallback
-                )
+                simpleAdapter.replaceAll(SampleData.getShuffle("SimpleAsync Shuffle"))
             } else {
-                simpleAdapter.replaceAll(SampleData.get("Simple"), userDiffCallback)
+                simpleAdapter.replaceAll(SampleData.get("SimpleAsync"))
             }
 
             shuffle = !shuffle
@@ -68,7 +64,6 @@ class SimpleRecyclerViewFragment :
 
     private fun initRecyclerView() {
         binding.listSample.adapter = simpleAdapter
-        simpleAdapter.replaceAll(SampleData.get("Simple"), userDiffCallback)
+        simpleAdapter.replaceAll(SampleData.get("SimpleAsync"))
     }
-
 }

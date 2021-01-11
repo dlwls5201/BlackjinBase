@@ -50,6 +50,14 @@ class SampleFragment : BaseFragment<FragmentSampleBinding>(R.layout.fragment_sam
                 (requireActivity() as SampleActivity).goToSimpleRecyclerViewFragment()
             }
 
+            btnSimpleAsyncRecyclerView.setOnClickListener {
+                (requireActivity() as SampleActivity).goToSimpleAsyncRecyclerViewFragment()
+            }
+
+            btnSimpleListRecyclerView.setOnClickListener {
+                (requireActivity() as SampleActivity).goToSimpleListRecyclerViewFragment()
+            }
+
             btnLiveRecyclerView.setOnClickListener {
                 (requireActivity() as SampleActivity).goToLiveRecyclerViewFragment()
             }
