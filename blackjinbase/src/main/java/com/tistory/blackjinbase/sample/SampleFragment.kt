@@ -6,8 +6,8 @@ import com.tistory.blackjinbase.R
 import com.tistory.blackjinbase.base.BaseFragment
 import com.tistory.blackjinbase.databinding.FragmentSampleBinding
 import com.tistory.blackjinbase.ext.alert
+import com.tistory.blackjinbase.ext.setOnSingleClickListener
 import com.tistory.blackjinbase.ext.toast
-import com.tistory.blackjinbase.listener.OnSingleClickListener
 
 class SampleFragment : BaseFragment<FragmentSampleBinding>(R.layout.fragment_sample) {
 
@@ -36,11 +36,9 @@ class SampleFragment : BaseFragment<FragmentSampleBinding>(R.layout.fragment_sam
             }
 
             var count = 0
-            btnSingleClick.setOnClickListener(object : OnSingleClickListener(3000) {
-                override fun onSingleClick(view: View) {
-                    btnSingleClick.text = "${count++}"
-                }
-            })
+            btnSingleClick.setOnSingleClickListener {
+                btnSingleClick.text = "${count++}"
+            }
 
             btnRecyclerView.setOnClickListener {
                 (requireActivity() as SampleActivity).goToRecyclerViewFragment()
