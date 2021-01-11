@@ -6,12 +6,22 @@ It is a my base library that collect common parts that are often used for rapid 
 
 [ ![Download](https://api.bintray.com/packages/dlwls5201/maven/blackjinbase/images/download.svg) ](https://bintray.com/dlwls5201/maven/blackjinbase/_latestVersion)
 
-Then, add the library to your module `build.gradle`
+Then, add the library to your module in `build.gradle`
 ```gradle
 dependencies {
     implementation 'com.blackjin.library:blackjinbase:x.y.z'
 }
 ```
+
+## Add Module
+
+If you want to use by module, add blackjinbase module and then add the dependencies in `build.gradle`
+```gradle
+dependencies {
+   implementation project(':blackjinbase')
+}
+```
+
 
 ## Enable DataBinding
 BlackjinBase needs [DataBinding](https://developer.android.com/topic/libraries/data-binding)
@@ -41,10 +51,36 @@ android {
 
 You can see the helper class for recyclerview in [sample](https://github.com/dlwls5201/BlackjinBase/tree/master/blackjinbase/src/main/java/com/tistory/blackjinbase/sample)
 
-### SimpleRecyclerViewFragment
+## RecyclerViewFragment
 
-### LiveRecyclerViewFragment
+## SimpleRecyclerViewFragment
 
+Use DiffUtil.Callback
+```kotlin
+val diffCallback = BaseDiffUtilCallback(this.items, items)
+val diffResult = DiffUtil.calculateDiff(diffCallback)
+```
+
+## SimpleAsyncRecyclerViewFragment
+
+Use DiffUtil.ItemCallback for AsyncListDiffer
+```kotlin
+private val asyncDiffer = AsyncListDiffer(this, BaseDiffItemCallback<ITEM>())
+```
+
+## SimpleListRecyclerViewFragment
+
+Use ListAdapter for AsyncListDiffer and databinding
+```xml
+<androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/list_sample"
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"
+           bind:itemLayoutId="@{@layout/item_sample}"
+           bind:itemList="@{items}"
+           tools:listitem="@layout/item_sample" />
+```
 
 License
 --------
