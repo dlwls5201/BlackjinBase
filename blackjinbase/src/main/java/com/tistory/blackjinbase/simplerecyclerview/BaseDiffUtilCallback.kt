@@ -1,4 +1,4 @@
-package com.tistory.blackjinbase.base
+package com.tistory.blackjinbase.simplerecyclerview
 
 import androidx.recyclerview.widget.DiffUtil
 

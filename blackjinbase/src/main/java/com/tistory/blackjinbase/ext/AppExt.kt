@@ -8,7 +8,6 @@ import android.content.res.Resources
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.tistory.blackjinbase.ext.dialog.AlertBuilder
@@ -17,7 +16,6 @@ import com.tistory.blackjinbase.ext.dialog.AndroidAlertBuilder
 
 fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
 fun Int.toDp(): Int = (this / Resources.getSystem().displayMetrics.density).toInt()
-
 
 fun Context.toast(message: CharSequence?) {
     if (message.isNullOrEmpty()) return

@@ -15,5 +15,4 @@ fun TextView.setHtmlText(htmlString: String?) {
     } else {
         Html.fromHtml(htmlString)
     }
-
 }

@@ -4,7 +4,6 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.tistory.blackjinbase.BR
 
@@ -32,12 +31,5 @@ abstract class SimpleAsyncRecyclerViewAdapter<ITEM : Any, B : ViewDataBinding>(
 
     override fun onBindViewHolder(holder: SimpleViewHolder<B>, position: Int) {
         holder.bind(asyncDiffer.currentList[position])
-    }
-
-    class BaseDiffItemCallback<ITEM : Any> : DiffUtil.ItemCallback<ITEM>() {
-        override fun areItemsTheSame(oldItem: ITEM, newItem: ITEM) = oldItem == newItem
-
-        override fun areContentsTheSame(oldItem: ITEM, newItem: ITEM) =
-            areItemsTheSame(oldItem, newItem)
     }
 }

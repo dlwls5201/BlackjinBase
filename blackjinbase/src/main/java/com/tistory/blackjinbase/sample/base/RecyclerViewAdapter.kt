@@ -5,9 +5,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.tistory.blackjinbase.R
-import com.tistory.blackjinbase.base.BaseDiffUtilCallback
 import com.tistory.blackjinbase.base.BaseViewHolder
 import com.tistory.blackjinbase.databinding.ItemSampleBinding
+import com.tistory.blackjinbase.simplerecyclerview.BaseDiffUtilCallback
 
 class RecyclerViewAdapter : RecyclerView.Adapter<BaseViewHolder<ViewDataBinding, String>>() {
 

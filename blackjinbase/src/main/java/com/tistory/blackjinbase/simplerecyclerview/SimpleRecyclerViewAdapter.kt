@@ -6,7 +6,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.tistory.blackjinbase.BR
-import com.tistory.blackjinbase.base.BaseDiffUtilCallback
 
 abstract class SimpleRecyclerViewAdapter<ITEM : Any, B : ViewDataBinding>(
     @LayoutRes private val layoutRes: Int,

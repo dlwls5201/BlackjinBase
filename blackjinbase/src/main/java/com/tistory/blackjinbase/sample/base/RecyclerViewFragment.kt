@@ -31,11 +31,26 @@ class RecyclerViewFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initButton()
+        initRecyclerView()
+    }
 
-        with(binding.listSample) {
-            adapter = recyclerViewAdapter
+    private var shuffle = true
+
+    private fun initButton() {
+        binding.btnShuffle.setOnClickListener {
+            if (shuffle) {
+                recyclerViewAdapter.replaceAll(SampleData.getShuffle("Base Shuffle"))
+            } else {
+                recyclerViewAdapter.replaceAll(SampleData.get("Base"))
+            }
+
+            shuffle = !shuffle
         }
+    }
 
-        recyclerViewAdapter.replaceAll(SampleData.get("RecyclerViewFragment"))
+    private fun initRecyclerView() {
+        binding.listSample.adapter = recyclerViewAdapter
+        recyclerViewAdapter.replaceAll(SampleData.get("Base"))
     }
 }

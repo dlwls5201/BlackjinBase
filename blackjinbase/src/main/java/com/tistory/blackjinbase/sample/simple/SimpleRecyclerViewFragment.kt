@@ -70,5 +70,4 @@ class SimpleRecyclerViewFragment :
         binding.listSample.adapter = simpleAdapter
         simpleAdapter.replaceAll(SampleData.get("Simple"), userDiffCallback)
     }
-
 }
