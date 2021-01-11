@@ -8,6 +8,8 @@ import android.content.res.Resources
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.tistory.blackjinbase.ext.dialog.AlertBuilder
 import com.tistory.blackjinbase.ext.dialog.AndroidAlertBuilder
@@ -26,6 +28,15 @@ fun Context.toast(@StringRes messageId: Int) {
     Toast.makeText(this, messageId, Toast.LENGTH_SHORT).show()
 }
 
+fun Fragment.toast(message: CharSequence?) {
+    if (message.isNullOrEmpty()) return
+    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+}
+
+fun Fragment.toast(@StringRes messageId: Int) {
+    Toast.makeText(requireContext(), messageId, Toast.LENGTH_SHORT).show()
+}
+
 fun Context.longToast(message: CharSequence?) {
     if (message.isNullOrEmpty()) return
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
@@ -33,6 +44,15 @@ fun Context.longToast(message: CharSequence?) {
 
 fun Context.longToast(@StringRes messageId: Int) {
     Toast.makeText(this, messageId, Toast.LENGTH_LONG).show()
+}
+
+fun Fragment.longToast(message: CharSequence?) {
+    if (message.isNullOrEmpty()) return
+    Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
+}
+
+fun Fragment.longToast(@StringRes messageId: Int) {
+    Toast.makeText(requireContext(), messageId, Toast.LENGTH_LONG).show()
 }
 
 fun Context.alert(

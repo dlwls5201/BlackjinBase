@@ -27,7 +27,7 @@ class LiveRecyclerViewFragment :
             R.layout.item_sample,
             viewLifecycleOwner
         ) {
-            requireContext().toast(it)
+            toast(it)
         }
     }
 }
