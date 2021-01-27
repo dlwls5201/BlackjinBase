@@ -10,8 +10,8 @@ try {
 
 
 bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
+    user = properties.getProperty("bintrayUser")
+    key = properties.getProperty("bintrayApiKey")
 
     configurations = ['archives']
 
