@@ -26,14 +26,17 @@ fun Context.toast(@StringRes messageId: Int) {
     Toast.makeText(this, messageId, Toast.LENGTH_SHORT).show()
 }
 
-fun Fragment.toast(message: CharSequence?) {
-    if (message.isNullOrEmpty()) return
-    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-}
+fun Fragment.toast(message: CharSequence?): Toast = Toast
+    .makeText(context, message, Toast.LENGTH_SHORT)
+    .apply {
+        show()
+    }
 
-fun Fragment.toast(@StringRes messageId: Int) {
-    Toast.makeText(requireContext(), messageId, Toast.LENGTH_SHORT).show()
-}
+fun Fragment.toast(@StringRes messageId: Int): Toast = Toast
+    .makeText(context, messageId, Toast.LENGTH_SHORT)
+    .apply {
+        show()
+    }
 
 fun Context.longToast(message: CharSequence?) {
     if (message.isNullOrEmpty()) return
@@ -44,14 +47,17 @@ fun Context.longToast(@StringRes messageId: Int) {
     Toast.makeText(this, messageId, Toast.LENGTH_LONG).show()
 }
 
-fun Fragment.longToast(message: CharSequence?) {
-    if (message.isNullOrEmpty()) return
-    Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
-}
+fun Fragment.longToast(message: CharSequence?): Toast = Toast
+    .makeText(context, message, Toast.LENGTH_SHORT)
+    .apply {
+        show()
+    }
 
-fun Fragment.longToast(@StringRes messageId: Int) {
-    Toast.makeText(requireContext(), messageId, Toast.LENGTH_LONG).show()
-}
+fun Fragment.longToast(@StringRes messageId: Int): Toast = Toast
+    .makeText(context, messageId, Toast.LENGTH_SHORT)
+    .apply {
+        show()
+    }
 
 fun Context.alert(
     title: CharSequence? = null,
